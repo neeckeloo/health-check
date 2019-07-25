@@ -1,0 +1,15 @@
+{
+    "name": "tseguier/health-check",
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/framework-bundle": "4.2.*",
+        "php": ">=7.1"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "tseguier",
+            "email": "t.seguier.ext_azu@sodexo.com"
+        }
+    ]
+}

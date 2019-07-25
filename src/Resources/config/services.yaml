@@ -1,0 +1,3 @@
+services:
+  Tseguier\HealthCheckBundle\Controller\HealthCheckController:
+    autoconfigure: true
