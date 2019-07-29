@@ -58,7 +58,6 @@ final class HealthCheckController
         ];
 
         foreach ($this->healthCheckers as $healthService) {
-          var_dump('HEALTH_CHECK');
             $info = $healthService->checkHealth();
             if (!$info->getStatus()) {
                 $data['status'] = false;
