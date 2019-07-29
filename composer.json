@@ -1,6 +1,7 @@
 {
     "name": "tseguier/health-check",
     "type": "symfony-bundle",
+    "license": "MIT",
     "require": {
         "php": ">=7.1",
         "symfony/routing": "^4.1",
@@ -9,7 +10,6 @@
         "symfony/config": "^4.1",
         "symfony/http-kernel": "^4.1"
     },
-    "license": "MIT",
     "authors": [
         {
             "name": "tseguier",
