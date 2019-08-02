@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tseguier\HealthCheckBundle\DependencyInjection;
 
 use Tseguier\HealthCheckBundle\Controller\HealthCheckController;

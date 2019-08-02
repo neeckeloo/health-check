@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HealthCheckTest\Controller;
 
 use PHPUnit\Framework\TestCase;
