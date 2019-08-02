@@ -7,6 +7,8 @@ namespace Tseguier\HealthCheckBundle\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
+use Tseguier\HealthCheckBundle\CheckResult\FailedCheck;
+use Tseguier\HealthCheckBundle\HealthCheckInterface;
 
 /**
  * @Route("/healthcheck")
@@ -63,9 +65,14 @@ final class HealthCheckController
           'timestamp' => date($this->dateFormat),
         ];
 
-        foreach ($this->healthCheckers as $healthService) {
-            $info = $healthService->checkHealth();
-            if (!$info->getStatus()) {
+        foreach ($this->healthCheckers as $healthChecker) {
+            if (!$healthChecker instanceof HealthCheckInterface) {
+                continue;
+            }
+
+            $checkResult = $healthChecker->checkHealth();
+
+            if ($checkResult instanceof FailedCheck) {
                 $data['status'] = false;
             }
         }
