@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tseguier\HealthCheckBundle\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
