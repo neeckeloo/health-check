@@ -1,0 +1,7 @@
+includes:
+    - vendor/phpstan/phpstan-symfony/extension.neon
+parameters:
+  autoload_directories:
+    - %currentWorkingDirectory%/src
+  excludes_analyse:
+    - %currentWorkingDirectory%/src/DependencyInjection/Configuration.php
