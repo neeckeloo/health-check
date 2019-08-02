@@ -4,6 +4,9 @@ namespace Tseguier\HealthCheckBundle\Dto;
 
 class HealthData
 {
+    /**
+     * @var bool
+     */
     private $status;
 
     public function __construct(bool $status)
@@ -11,7 +14,7 @@ class HealthData
         $this->status = $status;
     }
 
-    public function setStatus(bool $status)
+    public function setStatus(bool $status): void
     {
         $this->status = $status;
     }

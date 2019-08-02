@@ -2,7 +2,6 @@
 
 namespace Tseguier\HealthCheckBundle\Controller;
 
-use Tseguier\HealthCheckBundle\HealthCheckInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
@@ -12,8 +11,14 @@ use Swagger\Annotations as SWG;
  */
 final class HealthCheckController
 {
+    /**
+     * @var array|iterable
+     */
     private $healthCheckers = [];
 
+    /**
+     * @var string
+     */
     private $dateFormat;
 
     public function __construct(iterable $healthCheckers, string $dateFormat)
