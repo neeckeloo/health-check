@@ -28,33 +28,31 @@ final class HealthCheckController
     }
 
     /**
-       * Get paginated country configurations.
-       *
-       * @Route("", methods={"GET"})
-       *
-       * @SWG\Response(
-       *     response=200,
-       *     description="Healthy system",
-       *     schema=@SWG\Schema(type="object",
-       *          @SWG\Property(property="data", @SWG\Items(
-       *              @SWG\Property(property="status", type="boolean"),
-       *              @SWG\Property(property="timestamp", type="string", example="countries"),
-       *          ))
-       *    )
-       * )
-       * @SWG\Response(
-       *     response=500,
-       *     description="Unhealthy system",
-       *     schema=@SWG\Schema(type="object",
-       *          @SWG\Property(property="data", @SWG\Items(
-       *              @SWG\Property(property="status", type="boolean"),
-       *              @SWG\Property(property="timestamp", type="string", example="countries"),
-       *          ))
-       *    )
-       * )
-       *
-       *
-       */
+     * Get system health
+     *
+     * @Route("", methods={"GET"})
+     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Healthy system",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data", @SWG\Items(
+     *              @SWG\Property(property="status", type="boolean"),
+     *              @SWG\Property(property="timestamp", type="string"),
+     *          ))
+     *    )
+     * )
+     * @SWG\Response(
+     *     response=503,
+     *     description="Unhealthy system",
+     *     schema=@SWG\Schema(type="object",
+     *          @SWG\Property(property="data", @SWG\Items(
+     *              @SWG\Property(property="status", type="boolean"),
+     *              @SWG\Property(property="timestamp", type="string"),
+     *          ))
+     *    )
+     * )
+     */
     public function getHealth(): JsonResponse
     {
         $data = [
