@@ -34,6 +34,8 @@ final class HealthCheckController
      *
      * @SWG\Response(
      *     response=200,
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
      *     description="Healthy system",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data", @SWG\Items(
@@ -44,6 +46,8 @@ final class HealthCheckController
      * )
      * @SWG\Response(
      *     response=503,
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
      *     description="Unhealthy system",
      *     schema=@SWG\Schema(type="object",
      *          @SWG\Property(property="data", @SWG\Items(
