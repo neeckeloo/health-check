@@ -32,25 +32,26 @@ final class HealthCheckController
      *
      * @Route("", methods={"GET"})
      *
-     * @SWG\Response(
-     *     response=200,
-     *     description="Healthy system",
-     *     schema=@SWG\Schema(type="object",
-     *          @SWG\Property(property="data", @SWG\Items(
-     *              @SWG\Property(property="status", type="boolean"),
-     *              @SWG\Property(property="timestamp", type="string"),
-     *          ))
-     *    )
-     * )
-     * @SWG\Response(
-     *     response=503,
-     *     description="Unhealthy system",
-     *     schema=@SWG\Schema(type="object",
-     *          @SWG\Property(property="data", @SWG\Items(
-     *              @SWG\Property(property="status", type="boolean"),
-     *              @SWG\Property(property="timestamp", type="string"),
-     *          ))
-     *    )
+     * @SWG\Get(
+     *     produces={"application/json"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Healthy system",
+     *         @SWG\Schema(
+     *             required={"status", "timestamp"},
+     *             @SWG\Property(property="status", type="boolean"),
+     *             @SWG\Property(property="timestamp", type="string")
+     *         ),
+     *     ),
+     *     @SWG\Response(
+     *         response=503,
+     *         description="Unhealthy system",
+     *         @SWG\Schema(
+     *             required={"status", "timestamp"},
+     *             @SWG\Property(property="status", type="boolean"),
+     *             @SWG\Property(property="timestamp", type="string")
+     *         ),
+     *     ),
      * )
      */
     public function getHealth(): JsonResponse
