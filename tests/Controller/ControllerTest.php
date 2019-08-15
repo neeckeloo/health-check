@@ -9,6 +9,7 @@ use Tseguier\HealthCheckBundle\CheckResult\CheckResult;
 use Tseguier\HealthCheckBundle\CheckResult\FailedCheck;
 use Tseguier\HealthCheckBundle\CheckResult\SuccessfulCheck;
 use Tseguier\HealthCheckBundle\Controller\HealthCheckController;
+use Tseguier\HealthCheckBundle\Exception\InvalidHealthCheckerException;
 use Tseguier\HealthCheckBundle\HealthCheckInterface;
 
 class SuccessfulChecker implements HealthCheckInterface
@@ -27,6 +28,10 @@ class FailedChecker implements HealthCheckInterface
     }
 }
 
+class InvalidChecker
+{
+}
+
 class ControllerTest extends TestCase
 {
     public function testSuccess()
@@ -38,7 +43,6 @@ class ControllerTest extends TestCase
 
         $this->assertEquals($result->getStatusCode(), 200);
         $this->assertEquals($body->status, true);
-
     }
 
     public function testFail()
@@ -50,6 +54,15 @@ class ControllerTest extends TestCase
 
         $this->assertEquals($result->getStatusCode(), 503);
         $this->assertEquals($body->status, false);
+    }
 
+    public function testHealthCheckWithInvalidCheckerThrowsException()
+    {
+        $checker = new InvalidChecker();
+        $controller = new HealthCheckController([$checker], 'Y-m-d H:i:s T');
+
+        $this->expectException(InvalidHealthCheckerException::class);
+
+        $controller->getHealth();
     }
 }

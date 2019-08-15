@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
 use Tseguier\HealthCheckBundle\CheckResult\FailedCheck;
+use Tseguier\HealthCheckBundle\Exception\InvalidHealthCheckerException;
 use Tseguier\HealthCheckBundle\HealthCheckInterface;
 
 /**
@@ -67,7 +68,7 @@ final class HealthCheckController
 
         foreach ($this->healthCheckers as $healthChecker) {
             if (!$healthChecker instanceof HealthCheckInterface) {
-                continue;
+                throw new InvalidHealthCheckerException($healthChecker);
             }
 
             $checkResult = $healthChecker->checkHealth();
